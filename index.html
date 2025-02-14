@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background: #121212; color: #fff; text-align: center; }
+        header { background: #1f1f1f; padding: 1rem 0; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+        nav ul { list-style: none; display: flex; justify-content: center; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; font-size: 18px; transition: color 0.3s; }
+        nav ul li a:hover { color: #ff9800; }
+        section { padding: 120px 20px; min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .container { max-width: 1000px; }
+
+        /* Home Section */
+        #home img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #ff9800; }
+        #home h1 { font-size: 2.5rem; margin-bottom: 10px; color: #ff9800; }
+        #home p { font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto; color: #ccc; }
+
+        /* About Section */
+        #about h1 { font-size: 2.5rem; margin-bottom: 20px; color: #ff9800; }
+        #about p { font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto; color: #ccc; }
+
+        /* Skills Section */
+        .skills-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px; }
+        .skill { background: #1f1f1f; padding: 20px; border-radius: 10px; text-align: center; width: 150px; transition: transform 0.3s, box-shadow 0.3s; }
+        .skill:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 152, 0, 0.5); }
+        .skill-icon { font-size: 50px; color: #ff9800; margin-bottom: 10px; }
+        .skill p { font-size: 1rem; color: #ccc; }
+
+        /* Projects Section */
+        #projects h1 { font-size: 2.5rem; margin-bottom: 20px; color: #ff9800; }
+        .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: auto; }
+        .project-card { background: #1f1f1f; padding: 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 152, 0, 0.3); transition: 0.3s; }
+        .project-card:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 152, 0, 0.5); }
+        .project-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
+        .project-card h3 { color: #ff9800; margin-top: 15px; font-size: 1.2rem; }
+
+        /* Contact Section */
+        #contact { padding: 100px 20px; background: #1f1f1f; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .contact-container { background: #222; padding: 40px; border-radius: 15px; box-shadow: 0 0 20px rgba(255, 152, 0, 0.5); max-width: 600px; width: 100%; text-align: center; }
+        #contact h1 { font-size: 2.5rem; margin-bottom: 20px; color: #ff9800; }
+        form { display: flex; flex-direction: column; width: 100%; margin-top: 15px; }
+        input, textarea { margin-bottom: 15px; padding: 15px; border: 1px solid #ff9800; border-radius: 5px; background: #121212; color: white; font-size: 18px; }
+        button { padding: 15px; font-size: 18px; border: none; background: #ff9800; color: white; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #ff5722; }
+
+        .logo {
+            position: absolute;
+            left: 50px;
+            width: 200px;
+            height: 120px;
+            font-size: larger;
+            font-weight: bolder;
+            color: #ff9800;
+        }
+        /* About Section */
+        #about {
+            background: #1a1a1a;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .about-container {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
+            max-width: 800px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .about-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(255, 152, 0, 0.5);
+        }
+
+        #about h1 {
+            font-size: 2.8rem;
+            color: #ff9800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd;
+            text-align: justify;
+        }
+
+        #about p strong {
+            color: #ff9800;
+            font-size: 1.3rem;
+        }
+        /* General Section Styling */
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Container for Better Styling */
+        .section-container {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
+            max-width: 900px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(255, 152, 0, 0.5);
+        }
+
+        /* Section Headings */
+        section h1 {
+            font-size: 2.5rem;
+            color: #ff9800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Paragraphs */
+        section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd;
+            text-align: justify;
+        }
+
+        /* Skills Section Styling */
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 150px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+        }
+
+        .skill-icon {
+            font-size: 50px;
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+
+        /* Projects Section */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .project-card {
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 152, 0, 0.5);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .project-card h3 {
+            color: #ff9800;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">My Portfolio</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="section-container">
+            <img src="photo.jpg" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 50%; border: 4px solid #ff9800;">
+            <h1>Hello, I'm Amogh Raj</h1>
+            <p>Aspiring Frontend Developer | Passionate About Creating Beautiful & User-Friendly Web Interfaces</p>
+        </div>
+    </section>
+    
+
+    <section id="about">
+        <div class="section-container">
+            <h1>About Me</h1>
+            <p><strong>Hey there! I'm Amogh Raj</strong>, a beginner frontend developer with a strong interest in creating clean, responsive, and engaging web applications.</p>
+            <p>Skills I'm Learning & Using:</p>
+            <p>✅ HTML, CSS, JavaScript<br>
+               ✅ React.js & Responsive Design<br>
+               ✅ Git & GitHub for version control<br>
+               ✅ Basic UI/UX Principles</p>
+            <p>I'm always open to learning new technologies and collaborating on exciting projects.</p>
+        </div>
+    </section>
+    
+
+    <section id="skills">
+        <div class="section-container">
+            <h1>My Skills</h1>
+            <div class="skills-container">
+                <div class="skill">
+                    <span class="material-icons skill-icon">code</span>
+                    <p>Python</p>
+                </div>
+                <div class="skill">
+                    <span class="material-icons skill-icon">language</span>
+                    <p>HTML</p>
+                </div>
+                <div class="skill">
+                    <span class="material-icons skill-icon">palette</span>
+                    <p>CSS</p>
+                </div>
+                <div class="skill">
+                    <span class="material-icons skill-icon">flash_on</span>
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill">
+                    <span class="material-icons skill-icon">whatshot</span>
+                    <p>Flask</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="projects">
+        <div class="section-container">
+            <h1>My Projects</h1>
+            <div class="projects">
+                <a href="https://www.google.com"><div class="project-card"><img src="calc.png" alt="Project 1"><h3>Project 1 - Calculator using Html CSS JavaScript</h3></div></a>
+                <div class="project-card"><img src="typespeed.png" alt="Project 2"><h3>Project 2 - TypeRacer using Html CSS JavaScript</h3></div>
+                <div class="project-card"><img src="monitoring.png" alt="Project 3"><h3>Project 3 - SoS Ecg System to Monitor Heartbeat of patient using Flask Html CSS JavaScript</h3></div>
+                <div class="project-card"><img src="Screenshot 2025-02-14 172726.png" alt="Project 4"><h3>Project 4 - Weather App Using Html CSS JS Api Integration</h3></div>
+                <div class="project-card"><img src="todo.png" alt="Project 5"><h3>Project 5 - Todo List Using Html Css Js </h3></div>
+                <div class="project-card"><img src="Bright.png" alt="Project 6"><h3>Project 6 - Brightness control using mediapipe and openCV</h3></div>
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <section id="contact">
+        <div class="contact-container">
+            <h1>Contact Me</h1>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+
+</body>
+</html>
